@@ -52,8 +52,7 @@ namespace GrowTestApi.Repositories
             {
                 return false;
             }
-            oldPolicy = policy;
-            _context.PolicyItems.Update(oldPolicy);
+            _context.PolicyItems.Update(policy);
             _context.SaveChanges();
             return true;
         }

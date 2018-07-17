@@ -9,7 +9,7 @@ namespace GrowTestApi.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public ICollection<CoverageType> Coverage { get; set; }
-        public DateTime StartDay { get; set; }
+        public string StartDay { get; set; }
         public int CoveragePeriod { get; set; }
         public decimal Ammount { get; set; }
         public Risk RiskType { get; set; }

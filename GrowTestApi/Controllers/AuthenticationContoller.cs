@@ -21,15 +21,16 @@ namespace GrowTestApi.Controllers
 
 
         [HttpPost(Name = "authenticate")]
-        public IActionResult AuthStart([FromBody] User item)
+        public bool AuthStart([FromBody] User item)
         {
-            var isValidLogin = _authService.Authentication(item.username, item.password);
-            if (!isValidLogin)
-            {
-                return NotFound();
-            }
+            return _authService.Authentication(item.username, item.password);
+      
+        }
 
-            return NoContent();
+        [HttpGet(Name = "logout")]
+        public bool AuthFinish()
+        {
+            return true;
         }
     }
 }

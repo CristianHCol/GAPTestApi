@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GrowTestApi.Model;
+using System.Linq;
 using GrowTestApi.Repositories;
 
 
@@ -27,6 +28,13 @@ namespace GrowTestApi.Services
 
         public bool Create(Policy policy)
         {
+            if (policy.RiskType.Description == "Alto")
+            {
+                List<CoverageType> L = policy.Coverage.ToList();
+                L[0].Percentage = 30;
+                policy.Coverage.Remove(L[0]);
+                policy.Coverage.Add(L[0]);
+            }
             return _policyRepository.Create(policy);
         }
 

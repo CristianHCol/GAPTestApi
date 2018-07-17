@@ -46,6 +46,7 @@ namespace GrowTestApi
             services.AddDbContext<CustomersContext>(opt => opt.UseInMemoryDatabase("CustomerList"));
             services.AddDbContext<RiskContext>(opt => opt.UseInMemoryDatabase("RiskList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +63,8 @@ namespace GrowTestApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors(builder => builder.WithOrigins("*"));
+
         }
     }
 }
